@@ -1,0 +1,130 @@
+syntax = "proto3";
+
+import "SiLAFramework.proto";
+
+package sila2.org.silastandard.core.silaservice.v1;
+
+/* This Feature MUST be implemented by each SiLA Server. It specifies Commands and Properties to discover the Features a SiLA Server implements as well as details about the SiLA Server, like name, type, description, vendor and UUID. Any interaction described in this feature MUST not affect the behaviour of any other Feature. */
+service SiLAService {
+  /* Get the Feature Definition of an implemented Feature by its fully qualified Feature Identifier. This command has no preconditions and no further dependencies and can be called at any time. */
+  rpc GetFeatureDefinition (sila2.org.silastandard.core.silaservice.v1.GetFeatureDefinition_Parameters) returns (sila2.org.silastandard.core.silaservice.v1.GetFeatureDefinition_Responses) {}
+  /* Sets a human readable name to the Server Name Property.Command has no preconditions and no further dependencies and can be called at any time. */
+  rpc SetServerName (sila2.org.silastandard.core.silaservice.v1.SetServerName_Parameters) returns (sila2.org.silastandard.core.silaservice.v1.SetServerName_Responses) {}
+  /* 
+      Human readable name of the SiLA Server. The name can be set using the 'Set Server Name' command.
+     */
+  rpc Get_ServerName (sila2.org.silastandard.core.silaservice.v1.Get_ServerName_Parameters) returns (sila2.org.silastandard.core.silaservice.v1.Get_ServerName_Responses) {}
+  /* 
+      The type of this server. It, could be, e.g., in the case of a SiLA Device the model name.
+      It is specified by the implementer of the SiLA Server and MAY not be unique.
+     */
+  rpc Get_ServerType (sila2.org.silastandard.core.silaservice.v1.Get_ServerType_Parameters) returns (sila2.org.silastandard.core.silaservice.v1.Get_ServerType_Responses) {}
+  /* 
+      Globally unique identifier that identifies a SiLA Server. The Server UUID MUST be generated once
+      and remain the same for all times.
+     */
+  rpc Get_ServerUUID (sila2.org.silastandard.core.silaservice.v1.Get_ServerUUID_Parameters) returns (sila2.org.silastandard.core.silaservice.v1.Get_ServerUUID_Responses) {}
+  /* 
+      Description of the SiLA Server. This should include the use and purpose of this SiLA Server.
+     */
+  rpc Get_ServerDescription (sila2.org.silastandard.core.silaservice.v1.Get_ServerDescription_Parameters) returns (sila2.org.silastandard.core.silaservice.v1.Get_ServerDescription_Responses) {}
+  /* 
+      Returns the version of the SiLA Server. A "Major" and a "Minor" version number (e.g. 1.0) MUST be provided,
+      a Patch version number MAY be provided. Optionally, an arbitrary text, separated by an underscore MAY be
+      appended, e.g. “3.19.373_mighty_lab_devices”.
+     */
+  rpc Get_ServerVersion (sila2.org.silastandard.core.silaservice.v1.Get_ServerVersion_Parameters) returns (sila2.org.silastandard.core.silaservice.v1.Get_ServerVersion_Responses) {}
+  /* 
+      Returns the URL to the website of the vendor or the website of the product of this SiLA Server.
+      This URL SHOULD be accessible at all times.
+      The URL is a Uniform Resource Locator as defined in RFC 1738.
+     */
+  rpc Get_ServerVendorURL (sila2.org.silastandard.core.silaservice.v1.Get_ServerVendorURL_Parameters) returns (sila2.org.silastandard.core.silaservice.v1.Get_ServerVendorURL_Responses) {}
+  /* 
+      Returns a list of fully qualified Feature identifiers of all implemented Features of this SiLA Server.
+      This list SHOULD remain the same throughout the lifetime of the SiLA Server.
+     */
+  rpc Get_ImplementedFeatures (sila2.org.silastandard.core.silaservice.v1.Get_ImplementedFeatures_Parameters) returns (sila2.org.silastandard.core.silaservice.v1.Get_ImplementedFeatures_Responses) {}
+}
+
+/* Parameters for GetFeatureDefinition */
+message GetFeatureDefinition_Parameters {
+  sila2.org.silastandard.String FeatureIdentifier = 1;  /* The fully qualified Feature identifier for which the Feature definition shall be retrieved. */
+}
+
+/* Responses of GetFeatureDefinition */
+message GetFeatureDefinition_Responses {
+  sila2.org.silastandard.String FeatureDefinition = 1;  /* The Feature definition in XML format (according to the Feature Definition Schema). */
+}
+
+/* Parameters for SetServerName */
+message SetServerName_Parameters {
+  sila2.org.silastandard.String ServerName = 1;  /* The human readable name to assign to the SiLA Server. */
+}
+
+/* Responses of SetServerName */
+message SetServerName_Responses {
+}
+
+/* Parameters for ServerName */
+message Get_ServerName_Parameters {
+}
+
+/* Responses of ServerName */
+message Get_ServerName_Responses {
+  sila2.org.silastandard.String ServerName = 1;  /* Human readable name of the SiLA Server. The name can be set using the 'Set Server Name' command. */
+}
+
+/* Parameters for ServerType */
+message Get_ServerType_Parameters {
+}
+
+/* Responses of ServerType */
+message Get_ServerType_Responses {
+  sila2.org.silastandard.String ServerType = 1;  /* The type of this server. It, could be, e.g., in the case of a SiLA Device the model name. It is specified by the implementer of the SiLA Server and MAY not be unique. */
+}
+
+/* Parameters for ServerUUID */
+message Get_ServerUUID_Parameters {
+}
+
+/* Responses of ServerUUID */
+message Get_ServerUUID_Responses {
+  sila2.org.silastandard.String ServerUUID = 1;  /* Globally unique identifier that identifies a SiLA Server. The Server UUID MUST be generated once and remain the same for all times. */
+}
+
+/* Parameters for ServerDescription */
+message Get_ServerDescription_Parameters {
+}
+
+/* Responses of ServerDescription */
+message Get_ServerDescription_Responses {
+  sila2.org.silastandard.String ServerDescription = 1;  /* Description of the SiLA Server. This should include the use and purpose of this SiLA Server. */
+}
+
+/* Parameters for ServerVersion */
+message Get_ServerVersion_Parameters {
+}
+
+/* Responses of ServerVersion */
+message Get_ServerVersion_Responses {
+  sila2.org.silastandard.String ServerVersion = 1;  /* Returns the version of the SiLA Server. A "Major" and a "Minor" version number (e.g. 1.0) MUST be provided, a Patch version number MAY be provided. Optionally, an arbitrary text, separated by an underscore MAY be appended, e.g. “3.19.373_mighty_lab_devices”. */
+}
+
+/* Parameters for ServerVendorURL */
+message Get_ServerVendorURL_Parameters {
+}
+
+/* Responses of ServerVendorURL */
+message Get_ServerVendorURL_Responses {
+  sila2.org.silastandard.String ServerVendorURL = 1;  /* Returns the URL to the website of the vendor or the website of the product of this SiLA Server. This URL SHOULD be accessible at all times. The URL is a Uniform Resource Locator as defined in RFC 1738. */
+}
+
+/* Parameters for ImplementedFeatures */
+message Get_ImplementedFeatures_Parameters {
+}
+
+/* Responses of ImplementedFeatures */
+message Get_ImplementedFeatures_Responses {
+  repeated sila2.org.silastandard.String ImplementedFeatures = 1;  /* Returns a list of fully qualified Feature identifiers of all implemented Features of this SiLA Server. This list SHOULD remain the same throughout the lifetime of the SiLA Server. */
+}
