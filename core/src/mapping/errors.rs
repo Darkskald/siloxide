@@ -1,4 +1,4 @@
-use prost::Message;
+/*use prost::Message;
 use tonic::{Code, Status};
 use crate::binding::{ProtoDefinedExecutionError, ProtoFrameworkError, ProtoSiLAError, ProtoUndefinedExecutionError, ProtoValidationError};
 use crate::binding::sila_standard::si_la_error::Error;
@@ -109,4 +109,4 @@ impl From<SiLAError> for Status {
         let temp: ProtoSiLAError = value.into();
         temp.into()
     }
-}
+}*/

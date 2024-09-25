@@ -1,0 +1,27 @@
+[package]
+name = "siloxide"
+version = "0.1.0"
+edition = "2021"
+authors = ["Florian-David Lange florian-david.lange@smartlab-solutions.de"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+base64 = "0.21.7"
+prost = { workspace = true }
+prost-types = { workspace = true }
+serde = {workspace = true}
+thiserror = {workspace = true}
+tonic = { workspace = true }
+tokio = {workspace = true}
+tracing = {workspace = true}
+tracing-subscriber = {workspace = true}
+url = {workspace = true}
+uuid = {workspace = true}
+
+[build-dependencies]
+tonic-build = "0.12.1"
+
+[dev-dependencies]
+env_logger = "0.10.1"

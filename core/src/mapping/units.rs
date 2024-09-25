@@ -1,7 +1,7 @@
-use crate::binding::{SiLAInteger, SiLAString};
+use crate::binding::sila_standard::String as SiLAString;
+use crate::binding::sila_standard::Integer as SiLAInteger;
 
 // string
-
 impl From<SiLAString> for String{
     fn from(value: SiLAString) -> Self {
         value.value
@@ -17,7 +17,6 @@ impl From<String> for SiLAString {
 }
 
 // integer
-
 impl From<i64> for SiLAInteger {
     fn from(value: i64) -> Self {
        SiLAInteger{
